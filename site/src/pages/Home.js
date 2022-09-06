@@ -1,6 +1,11 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, Suspense } from "react";
 import NavBar from "../Components/NavBar";
 import { TypeWriter } from "../Components/TypeWriter";
+
+import Computer from "../Components/Robot";
+
+import { Canvas } from "react-three-fiber";
+import { OrbitControls } from "@react-three/drei";
 
 const delay = ms => new Promise(
     resolve => setTimeout(resolve, ms)
@@ -47,10 +52,10 @@ export default function Home(){
                 {
                     TypeWriter(
                         [                            
-                            // "ENGINEERS",
-                            // "INNOVATORS",
-                            // "WE ARE BETTER THAN LARRY",
-                            // "FTC21630",
+                            "ENGINEERS",
+                            "INNOVATORS",
+                            "BETTER THAN LARRY",
+                            "FTC21630",
                             " "
                         ],
                         true,
@@ -70,7 +75,31 @@ export default function Home(){
                 }
             </h1>
             
-            {/* <Canvas */}
+            <Canvas style={{height: "70vh", width: "100%", top : -75 * topBarOffset + 120}}>
+                <ambientLight intensity={1}/>
+                <directionalLight
+                    castShadow
+                    position={[0, 10, 0]}
+                    intensity={1.5}
+                    shadow-mapSize-width={1024}
+                    shadow-mapSize-height={1024}
+                    shadow-bias={-0.0005}
+                    shadow-camera-near={0.01}
+                    shadow-camera-far={40}
+                    shadow-camera-left={-10}
+                    shadow-camera-right={10}
+                    shadow-camera-top={-10}
+                    shadow-camera-bottom={10}
+                />
+                <pointLight position={[50, 0, 50]} intensity={1} />
+                <pointLight position={[-50, 0, 50]} intensity={1} />
+                <Suspense>
+                    <Computer />
+                </Suspense>
+                <planeGeometry args={[100, 100]} />
+
+                <OrbitControls enableRotate={true} enableZoom={false} enablePan={false} />
+            </Canvas>
 
             <div ref={divRef} 
             style={{
