@@ -4,6 +4,9 @@ export default function About(){
             <h1 className="big-center-header">
                 About
             </h1>
+            <p>
+                
+            </p>
         </>
     );
 }
