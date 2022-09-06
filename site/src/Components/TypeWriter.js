@@ -4,13 +4,14 @@ const delay = ms => new Promise(
     resolve => setTimeout(resolve, ms)
 );  
 
-export function TypeWriter(text, doOnce=false, stopOnEnd=true, callbackOnDone = null, ms=25, apexPause=1000, tag="typewriter") {
+export function TypeWriter(text, doOnce=false, stopAtEmpty=true, callbackOnDone = null, ms=25, apexPause=1000, tag="typewriter") {
 
     const [displayText, setDisplayText] = useState("");
 
     let counter = 0;
     let incr = 1;
     let start = false;
+    let ended = false;
 
     let textRotationIndex = 0;
     let currentText = text[textRotationIndex];
@@ -22,12 +23,23 @@ export function TypeWriter(text, doOnce=false, stopOnEnd=true, callbackOnDone = 
             setDisplayText(currentProgressedText);
 
             if (counter === currentText.length){
+
                 await delay(apexPause);
+
+                if (stopAtEmpty && text[(textRotationIndex + 1) % text.length].replace(" ", "") == "")
+                {
+                    if (ended) {return;}
+                    callbackOnDone();
+                    ended = (true);
+                }
+
                 incr *= -1;
 
                 if (textRotationIndex + 1 === text.length && doOnce)
                 {
+                    if (ended) {return;}
                     callbackOnDone();
+                    ended = (true);
                     return;
                 }
             }
@@ -41,8 +53,7 @@ export function TypeWriter(text, doOnce=false, stopOnEnd=true, callbackOnDone = 
                 textRotationIndex++;
                 if (textRotationIndex === text.length && doOnce && counter == 0)
                 {
-                    callbackOnDone();
-                    return;
+                    text = [" "];
                 }
                 textRotationIndex = textRotationIndex % text.length;
                 currentText = text[textRotationIndex];
@@ -65,6 +76,11 @@ export function TypeWriter(text, doOnce=false, stopOnEnd=true, callbackOnDone = 
     return (
         <div className={tag}>
             <p><b>{displayText}</b></p>
+            {/* {displayText.replace(" ", "") != "" && <button onClick={() => {
+                if (ended) {return;}
+                callbackOnDone(); 
+                ended = (true)
+            }} style={{position: "absolute", bottom: 10, left: 10, zIndex: 1, color: "#fff", backgroundColor: "#000"}}><u>Skip</u></button>} */}
         </div>
     );
 }

@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@react-spring/three": "^9.5.2",
+    "@react-three/drei": "^9.28.2",
+    "@react-three/fiber": "^8.7.2",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",

@@ -59,8 +59,14 @@ body {
   margin-right: auto;
   margin-left: 2rem;
   font-size: 2.5rem;
+  font-family: 'Akshar', sans-serif;
 }
 
 .nav-item:first-child a {
   font-size: 2.5rem;
+}
+
+.header {
+  font-family: 'Akshar', sans-serif;
+  font-size: 3rem;
 }

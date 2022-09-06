@@ -22,18 +22,17 @@ export default function Home(){
 
     const recurAnim = async (tick = -100, callback = null) => {
 
-        setTopBarOffset(tick);
-
         await delay(0.1);
 
-        console.log(tick);
+        setTopBarOffset(tick);
 
-        if (tick <= -1)
+        if (tick <= -0.0025)
         {
             recurAnim(tick + (tick/-100) * 2, callback);
             //brezier curve
         }
         else {
+            setTopBarOffset(0);
             if (callback != null)
             {
                 callback();
@@ -44,24 +43,23 @@ export default function Home(){
     return(
         <div>
             <NavBar t={topBarOffset}/>
-            {!animDone && <h1 className="big-center-header" style={{top: 750 +  50 + topBarOffset * 10 , position: "absolute"}}>
+            <h1 className="big-center-header" style={{top: 750 +  50 + topBarOffset * 10 , position: "absolute"}}>
                 {
                     TypeWriter(
-                        [
-                            "A",
-                            "B",
-                            "C"
-                            // "WE ARE ENGINEERS",
-                            // "WE ARE INNOVATORS",
+                        [                            
+                            // "ENGINEERS",
+                            // "INNOVATORS",
                             // "WE ARE BETTER THAN LARRY",
-                            // "WE ARE CHAMPIONS"
+                            // "FTC21630",
+                            " "
                         ],
                         true,
                         true,
                         () => {
                             recurAnim(-100, () => {
                                 setAnimDone(true);
-                                console.log(topBarOffset);
+                                // console.log(topBarOffset);
+                                // console.log(animDone);
                             });
                             // if (window.pageYOffset != 0) return;
                             // divRef.current.scrollIntoView()
@@ -70,16 +68,27 @@ export default function Home(){
                         1000
                     )
                 }
-            </h1>}
-            <div style={{height: "100vh"}} />
-            {animDone && <div ref={divRef} style={{bottom: topBarOffset}}>
-                {/* {
-                    Array(10).fill(<p>aaaaa</p>)
-                } */}
-                <p>
-                    FTC 21630 - RPS Argonauts.
+            </h1>
+            
+            {/* <Canvas */}
+
+            <div ref={divRef} 
+            style={{
+                top: -500 * topBarOffset + 700,
+                position: "absolute",
+                width: "100vw",
+                padding: 25, backgroundColor: "rgba(256, 256, 256, 0.025)", borderTopLeftRadius: 25, borderTopRightRadius: 25
+            }}>
+                <p className="header" style={{padding: 0, margin: 0}}>
+                    RPS Argonauts
                 </p>
-            </div>}
+                <p style={{marginBottom: 25}}>
+                    The RPS Argonauts is ...
+                </p>
+                {
+                    Array(100).fill(<p>a</p>)
+                }
+            </div>
         </div>
     );
 }
