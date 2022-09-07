@@ -7,6 +7,8 @@ import Computer from "../Components/Robot";
 import { Canvas } from "react-three-fiber";
 import { OrbitControls } from "@react-three/drei";
 
+import { useNavigate } from "react-router-dom";
+
 const delay = ms => new Promise(
     resolve => setTimeout(resolve, ms)
 );  
@@ -17,13 +19,21 @@ export default function Home(){
 
     const [scrollY, setScrollY] = useState(0);
 
+    let navigate = useNavigate();
+
     window.addEventListener("scroll", function(){
         setScrollY(window.scrollY);
+        if (window.scrollY >= 2400 && !redirAlready)
+        {
+            setRedirAlready(true);
+            // console.log("over at " + window.scrollY);
+            navigate("/about") 
+        }
     });
 
     //for scrolling
     const divRef = useRef(null);
-    const [animDone, setAnimDone] = useState(false);
+    const [redirAlready, setRedirAlready] = useState(false);
 
     const [topBarOffset, setTopBarOffset] = useState(-100);
 
@@ -47,9 +57,6 @@ export default function Home(){
         }
     }
 
-    // console.log(scrollY);
-    // console.log();
-
     return(
         <div>
             {/* 0 at top 1 at y=200 */}
@@ -58,20 +65,16 @@ export default function Home(){
                 {
                     TypeWriter(
                         [                            
-                            // "ENGINEERS",
-                            // "INNOVATORS",
+                            "ENGINEERS",
+                            "INNOVATORS",
                             // "BETTER THAN LARRY",
-                            // "FTC21630",
+                            "FTC21630",
                             " "
                         ],
                         true,
                         true,
                         () => {
-                            recurAnim(-100, () => {
-                                setAnimDone(true);
-                                // console.log(topBarOffset);
-                                // console.log(animDone);
-                            });
+                            recurAnim(-100);
                             // if (window.pageYOffset != 0) return;
                             // divRef.current.scrollIntoView()
                         },
@@ -81,7 +84,7 @@ export default function Home(){
                 }
             </h1>
             
-            <Canvas style={{position: "fixed", height: "70vh", width: "100%", top : 0}}>
+            <Canvas style={{position: "fixed", height: "100vh", width: "100%", top : -75 * topBarOffset + 120}}>
                 <ambientLight intensity={1}/>
                 <directionalLight
                     castShadow
@@ -107,16 +110,54 @@ export default function Home(){
                 <OrbitControls enableRotate={true} enableZoom={false} enablePan={false} />
             </Canvas>
 
+            <div className="first-scroll-div" style={{
+                position: "absolute",
+                top: 800,
+                left: clamp(scrollY - 400, -500, 25),
+                backgroundColor: "#fafa",
+                padding: 25
+            }}>
+                <h1>ABCD</h1>
+            </div>
+
+            <div className="first-scroll-div" style={{
+                position: "absolute",
+                top: 1600,
+                right: clamp(scrollY - 1100, -500, 25),
+                backgroundColor: "#fafa",
+                padding: 25,
+            }}>
+                <h1>ABCD</h1>
+                <p>lorem ipusm asdlfjskjallfjdfskjjafsd</p>
+            </div>
+
+            {/* closing div */}
+            <div className="clsoing-scroll-div" style={{
+                position: "fixed",
+                // top: 2250,
+                right: clamp(scrollY - 2250, -1000, 0),
+                backgroundColor: "#000",
+                width: "50vw",
+                height: "100vh"
+            }} />
+
+            <div className="clsoing-scroll-div" style={{
+                position: "fixed",
+                // top: 2250,
+                left: clamp(scrollY - 2250, -1000, 0),
+                backgroundColor: "#000",
+                width: "50vw",
+                height: "100vh"
+            }} />
+
             <div ref={divRef} 
             style={{
                 // top: 0,
                 position: "absolute",
                 width: "100vw",
+                height: (100 + topBarOffset) / 100 * 5000,
                 padding: 25, borderTopLeftRadius: 25, borderTopRightRadius: 25
             }}>
-                {
-                    Array(100).fill(<p>a</p>)
-                }
             </div>
         </div>
     );
