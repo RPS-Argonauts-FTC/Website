@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function NavBar({t}){
     return (
-    <nav className="nav-no-space" style={{top: t, position: "absolute", width: "100vw"}}>
+    <nav className="nav-no-space" style={{top: t, position: "fixed", width: "100vw"}}>
         <ul className="nav-list">
             <li className="nav-item">
                 <img src={require("../Image/Logo.png")} alt="logo" width="35" height="35"/>

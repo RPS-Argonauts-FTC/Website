@@ -11,6 +11,8 @@ const delay = ms => new Promise(
     resolve => setTimeout(resolve, ms)
 );  
 
+const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
+
 export default function Home(){
 
     const [scrollY, setScrollY] = useState(0);
@@ -45,17 +47,21 @@ export default function Home(){
         }
     }
 
+    // console.log(scrollY);
+    // console.log();
+
     return(
         <div>
-            <NavBar t={topBarOffset}/>
+            {/* 0 at top 1 at y=200 */}
+            <NavBar t={-100 + clamp(scrollY, 0, 200)/200 * 100}/>
             <h1 className="big-center-header" style={{top: 750 +  50 + topBarOffset * 10 , position: "absolute"}}>
                 {
                     TypeWriter(
                         [                            
-                            "ENGINEERS",
-                            "INNOVATORS",
-                            "BETTER THAN LARRY",
-                            "FTC21630",
+                            // "ENGINEERS",
+                            // "INNOVATORS",
+                            // "BETTER THAN LARRY",
+                            // "FTC21630",
                             " "
                         ],
                         true,
@@ -75,7 +81,7 @@ export default function Home(){
                 }
             </h1>
             
-            <Canvas style={{height: "70vh", width: "100%", top : -75 * topBarOffset + 120}}>
+            <Canvas style={{position: "fixed", height: "70vh", width: "100%", top : 0}}>
                 <ambientLight intensity={1}/>
                 <directionalLight
                     castShadow
@@ -103,17 +109,11 @@ export default function Home(){
 
             <div ref={divRef} 
             style={{
-                top: -500 * topBarOffset + 700,
+                // top: 0,
                 position: "absolute",
                 width: "100vw",
-                padding: 25, backgroundColor: "rgba(256, 256, 256, 0.025)", borderTopLeftRadius: 25, borderTopRightRadius: 25
+                padding: 25, borderTopLeftRadius: 25, borderTopRightRadius: 25
             }}>
-                <p className="header" style={{padding: 0, margin: 0}}>
-                    RPS Argonauts
-                </p>
-                <p style={{marginBottom: 25}}>
-                    The RPS Argonauts is ...
-                </p>
                 {
                     Array(100).fill(<p>a</p>)
                 }
