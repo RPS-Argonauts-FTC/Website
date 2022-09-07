@@ -26,7 +26,7 @@ export default function Home(){
 
         // console.log(window.scrollY);
 
-        if (window.scrollY >= 2500 && !redirAlready)
+        if (window.scrollY >= 1300 && !redirAlready)
         {
             redirAlready = true;
             console.log("over at " + window.scrollY);
@@ -64,7 +64,7 @@ export default function Home(){
     return(
         <div>
             {/* 0 at top 1 at y=200 */}
-            <NavBar t={-100 + clamp(scrollY, 0, 200)/200 * 100}/>
+            <NavBar t={-100 + clamp(scrollY, 0, 200)/200 * 100} background={"#000"}/>
             <h1 className="big-center-header" style={{top: 750 +  50 + topBarOffset * 10 , position: "absolute"}}>
                 {
                     TypeWriter(
@@ -117,43 +117,68 @@ export default function Home(){
             <div className="first-scroll-div" style={{
                 position: "absolute",
                 top: 800,
-                left: clamp(scrollY - 400, -500, 25),
-                backgroundColor: "#fafa",
+                // width: "50vw",
+                // position: clamp(scrollY - 400, -500, 25) >= 25 ? "fixed" : "absolute",
+                left: clamp(scrollY - 400, -500, 0),
+                backgroundColor: "rgba(0, 0, 0, 0.15)",
+                // borderRadius: 25,
                 padding: 25
             }}>
-                <h1>ABCD</h1>
+                <h1>Our Robot</h1>
+                <p>A 3D Rendering of our team's robot.</p>
             </div>
 
-            <div className="first-scroll-div" style={{
+            {/* <div className="first-scroll-div" style={{
                 position: "absolute",
-                top: 1600,
-                right: clamp(scrollY - 1100, -500, 25),
-                backgroundColor: "#fafa",
-                padding: 25,
+                top: 1200,
+                right: clamp(scrollY - 900, -700, 0),
+                backgroundColor: "rgba(222, 2, 2, 0.15)",
+                // borderRadius: 25,
+                padding: 25
             }}>
-                <h1>ABCD</h1>
+                <h1></h1>
                 <p>lorem ipusm asdlfjskjallfjdfskjjafsd</p>
-            </div>
+            </div> */}
 
             {/* closing div */}
-            <div className="clsoing-scroll-div" style={{
+            {/* <div style={{
                 position: "fixed",
-                // top: 2250,
-                right: clamp(scrollY - 2250, -1000, 0),
+                // top: 1500,
+                right: clamp(scrollY - 1200, -1000, 0),
+                backgroundColor: "#000",
+                width: "50vw",
+                height: "100vh",
+                zIndex: -1,
+            }} /> */}
+
+            {/* <div style={{
+                position: "fixed",
+                // top: 1500,
+                left: clamp(scrollY - 1200, -1000, 0),
+                backgroundColor: "#000",
+                width: "50vw",
+                height: "100vh"
+            }} /> */}
+
+            <div style={{
+                position: "fixed",
+                // top: 1500,
+                left: clamp(scrollY - 1200, -1000, 0),
                 backgroundColor: "#000",
                 width: "50vw",
                 height: "100vh"
             }} />
 
-            <div className="clsoing-scroll-div" style={{
+            <div style={{
                 position: "fixed",
-                // top: 2250,
-                left: clamp(scrollY - 2250, -1000, 0),
+                // top: 1500,
+                right: clamp(scrollY - 1200, -1000, 0),
                 backgroundColor: "#000",
                 width: "50vw",
                 height: "100vh"
             }} />
 
+            {/* make site scrollable */}
             <div ref={divRef} 
             style={{
                 // top: 0,
@@ -162,15 +187,6 @@ export default function Home(){
                 height: (100 + topBarOffset) / 100 * 5000,
                 padding: 25, borderTopLeftRadius: 25, borderTopRightRadius: 25
             }}>
-
-            {/* <h1 className="big-center-header" style={{
-                paddingTop: scrollY >= 2400 ? 0: 2400,
-                position: scrollY >= 2400 ? "fixed" : "relative",
-                textAlign: "center",
-                width: "100vw",
-            }}>
-                About
-            </h1> */}
             </div>
         </div>
     );
