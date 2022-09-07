@@ -23,17 +23,21 @@ export default function Home(){
 
     window.addEventListener("scroll", function(){
         setScrollY(window.scrollY);
-        if (window.scrollY >= 2400 && !redirAlready)
+
+        // console.log(window.scrollY);
+
+        if (window.scrollY >= 2500 && !redirAlready)
         {
-            setRedirAlready(true);
-            // console.log("over at " + window.scrollY);
+            redirAlready = true;
+            console.log("over at " + window.scrollY);
             navigate("/about") 
         }
     });
 
     //for scrolling
     const divRef = useRef(null);
-    const [redirAlready, setRedirAlready] = useState(false);
+    // const [redirAlready, setRedirAlready] = useState(false);
+    let redirAlready = false;
 
     const [topBarOffset, setTopBarOffset] = useState(-100);
 
@@ -65,8 +69,8 @@ export default function Home(){
                 {
                     TypeWriter(
                         [                            
-                            "ENGINEERS",
-                            "INNOVATORS",
+                            // "ENGINEERS",
+                            // "INNOVATORS",
                             // "BETTER THAN LARRY",
                             "FTC21630",
                             " "
@@ -158,6 +162,15 @@ export default function Home(){
                 height: (100 + topBarOffset) / 100 * 5000,
                 padding: 25, borderTopLeftRadius: 25, borderTopRightRadius: 25
             }}>
+
+            {/* <h1 className="big-center-header" style={{
+                paddingTop: scrollY >= 2400 ? 0: 2400,
+                position: scrollY >= 2400 ? "fixed" : "relative",
+                textAlign: "center",
+                width: "100vw",
+            }}>
+                About
+            </h1> */}
             </div>
         </div>
     );
