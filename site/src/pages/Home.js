@@ -71,7 +71,7 @@ export default function Home(){
     return(
         <div>
             {/* 0 at top 1 at y=200 */}
-            <NavBar t={-100 + clamp(scrollY, 0, 200)/200 * 100} background={"#000"}/>
+            <NavBar t={topBarOffset} background={"#000"}/>
             <h1 className="big-center-header" style={{top: 750 +  50 + topBarOffset * 10, position: "absolute", textAlign: "center", width: "100%"}}>
                 {
                     TypeWriter(
@@ -172,8 +172,8 @@ export default function Home(){
             <div style={{
                 position: "fixed",
                 // top: 1500,
-                left: clamp(scrollY - 1200, -1000, 0),
-                backgroundColor: "#000",
+                left: clamp(scrollY - 1100, -1000, 0),
+                backgroundColor: "rgba(0, 0, 0, " + clamp(scrollY - 700, 0, 500)/500 + ")",
                 width: "50vw",
                 height: "100vh"
             }} />
@@ -181,8 +181,8 @@ export default function Home(){
             <div style={{
                 position: "fixed",
                 // top: 1500,
-                right: clamp(scrollY - 1200, -1000, 0),
-                backgroundColor: "#000",
+                right: clamp(scrollY - 1100, -1000, 0),
+                backgroundColor: "rgba(0, 0, 0, " + clamp(scrollY - 700, 10, 500)/500 + ")",
                 width: "50vw",
                 height: "100vh"
             }} />
