@@ -9,6 +9,8 @@ import { OrbitControls } from "@react-three/drei";
 
 import { useNavigate } from "react-router-dom";
 
+import { a, useSpring } from "@react-spring/three";
+
 const delay = ms => new Promise(
     resolve => setTimeout(resolve, ms)
 );  
@@ -40,6 +42,11 @@ export default function Home(){
     let redirAlready = false;
 
     const [topBarOffset, setTopBarOffset] = useState(-100);
+    // const [rot, setRotation] = useState([0, 0, 0]);
+
+    const animProps = useSpring({
+        rotation: scrollY >= 0 ? [0, 0, 0] : [0, Math.PI * 100, 0],
+    })
 
     const recurAnim = async (tick = -100, callback = null) => {
 
@@ -65,7 +72,7 @@ export default function Home(){
         <div>
             {/* 0 at top 1 at y=200 */}
             <NavBar t={-100 + clamp(scrollY, 0, 200)/200 * 100} background={"#000"}/>
-            <h1 className="big-center-header" style={{top: 750 +  50 + topBarOffset * 10 , position: "absolute"}}>
+            <h1 className="big-center-header" style={{top: 750 +  50 + topBarOffset * 10, position: "absolute", textAlign: "center", width: "100%"}}>
                 {
                     TypeWriter(
                         [                            
@@ -107,7 +114,9 @@ export default function Home(){
                 <pointLight position={[50, 0, 50]} intensity={1} />
                 <pointLight position={[-50, 0, 50]} intensity={1} />
                 <Suspense>
-                    <Computer />
+                    <a.group rotation={animProps.rotation}>
+                        <Computer/>
+                    </a.group>
                 </Suspense>
                 <planeGeometry args={[100, 100]} />
 
@@ -125,7 +134,7 @@ export default function Home(){
                 padding: 25
             }}>
                 <h1>Our Robot</h1>
-                <p>A 3D Rendering of our team's robot.</p>
+                <p>A 3D Rendering of our team's robot. <br/> <br/> <b>Drag to spin around.</b></p>
             </div>
 
             {/* <div className="first-scroll-div" style={{
@@ -185,7 +194,7 @@ export default function Home(){
                 position: "absolute",
                 width: "100vw",
                 height: (100 + topBarOffset) / 100 * 5000,
-                padding: 25, borderTopLeftRadius: 25, borderTopRightRadius: 25
+                padding: 25, borderTopLeftRadius: 25, borderTopRightRadius: 25, zIndex: -1,
             }}>
             </div>
         </div>
