@@ -47,9 +47,9 @@ export default function Home(){
     // const [rot, setRotation] = useState([0, 0, 0]);
 
     const animProps = useSpring({
-        rotation: scrollY >= 200 ? [0, 0, 0] : [0, 0, 0],
+        rotation: scrollY >= 1000 ? [0, Math.PI, 0] : scrollY >= 200 ? [0, 0, 0] : [0, 0, 0],
         scale: scrollY >= 100 ? [1 + (scrollY - 200)/3000 * 1, 1 + (scrollY - 200)/3000 * 1, 1 + (scrollY - 200)/3000 * 1] : [4, 4, 4],
-        position: scrollY >= 100 ? [0, 0, 0] : [0, -6, 0],
+        position: scrollY >= 100 ? [0, 0, 0] : [0, -7.5, 0],
     })
 
     const recurAnim = async (tick = -100, callback = null) => {
@@ -76,7 +76,7 @@ export default function Home(){
         <div>
             {/* 0 at top 1 at y=200 */}
             <NavBar t={topBarOffset} background={"#000"}/>
-            <h1 className="big-center-header" style={{fontSize: clamp(200 - scrollY * 2, 1, 200) , position: "fixed", textAlign: "center", width: "100%", height: "100%", justifySelf: "center", color: "green", zIndex: 1}}>
+            <h1 className="big-center-header" style={{fontSize: clamp(200 - scrollY * 2, 1, 200) , position: "fixed", textAlign: "center", width: "100%", height: "100%", justifySelf: "center", color: "#ada", zIndex: 1}}>
                 {
                     TypeWriter(
                         [                            
@@ -99,7 +99,7 @@ export default function Home(){
                 }
             </h1>
             
-            <Canvas style={{position: "fixed", height: "100vh", width: "100%", bottom : clamp(scrollY, -250, 100)}}>
+            <Canvas style={{position: "fixed", height: "100vh", width: "100%", top: 125}}>
                 <ambientLight intensity={1}/>
                 <directionalLight
                     castShadow
