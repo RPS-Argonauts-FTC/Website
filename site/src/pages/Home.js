@@ -45,7 +45,7 @@ export default function Home(){
     // const [rot, setRotation] = useState([0, 0, 0]);
 
     const animProps = useSpring({
-        rotation: scrollY >= 0 ? [0, 0, 0] : [0, Math.PI * 100, 0],
+        rotation: scrollY >= 200 ? [0, 0, 0] : [0, Math.PI / 2, 0],
     })
 
     const recurAnim = async (tick = -100, callback = null) => {
@@ -125,16 +125,17 @@ export default function Home(){
 
             <div className="first-scroll-div" style={{
                 position: "absolute",
-                top: 800,
+                // top: 800,
                 // width: "50vw",
                 // position: clamp(scrollY - 400, -500, 25) >= 25 ? "fixed" : "absolute",
-                left: clamp(scrollY - 400, -500, 0),
+                top: clamp(scrollY - 300, -1000, 0) * 3 + 500,
                 backgroundColor: "rgba(0, 0, 0, 0.15)",
                 // borderRadius: 25,
                 padding: 25
             }}>
                 <h1>Our Robot</h1>
                 <p>A 3D Rendering of our team's robot. <br/> <br/> <b>Drag to spin around.</b></p>
+                {/* Chlictor forever */}
             </div>
 
             {/* <div className="first-scroll-div" style={{
