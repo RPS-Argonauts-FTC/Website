@@ -4,7 +4,7 @@ const delay = ms => new Promise(
     resolve => setTimeout(resolve, ms)
 );  
 
-export function TypeWriter(text, doOnce=false, stopAtEmpty=true, callbackOnDone = null, ms=25, apexPause=1000, tag="typewriter") {
+export function TypeWriter({text, doOnce=false, stopAtEmpty=true, callbackOnDone = null, ms=25, apexPause=1000, tag="typewriter"}) {
 
     const [displayText, setDisplayText] = useState("");
 

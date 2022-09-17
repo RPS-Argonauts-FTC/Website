@@ -14,28 +14,28 @@ export default function About(){
     window.addEventListener("scroll", scrollHandler);
 
     return (
-        <div style={{backgroundColor: "rgb(" + String(scrollY/100 * 255) + ", " + String(scrollY/100 * 255) + ", " + String(scrollY/100 * 255) + ")"}}>
-            <NavBar color={"rgb(" + String(255 - scrollY/100 * 255) + ", " + String(255 - scrollY/100 * 255) + ", " + String(255 - scrollY/100 * 255) + ")"}/>
-            <h1 className="big-center-header" style={{position: "absolute", textAlign: "center", width: "100%"}}>
+        <div style={{backgroundColor: "rgb(" + String(255 - scrollY/100 * 255) + ", " + String(255 - scrollY/100 * 255) + ", " + String(255 - scrollY/100 * 255) + ")"}}>
+            <NavBar color={"rgb(" + String(scrollY/100 * 255) + ", " + String(scrollY/100 * 255) + ", " + String(scrollY/100 * 255) + ")"}/>
+            <h1 className="big-center-header" style={{position: "absolute", textAlign: "center", width: "100%", color: "black"}}>
             {
-                    TypeWriter(
-                        [
-                            "ABOUT"
-                        ],
-                        true,
-                        true,
-                        () => {
+                    <TypeWriter
+                        text={[
+                            "About"
+                        ]}
+                        callbackOnDone={() => {
                             setTypeWriteEnd(true);
-                        },
-                        50,
-                        1000
-                    )
+                        }}
+                        doOnce={true}
+                        stopAtEmpty={true}
+                        ms={50}
+                        apexPause={1000}
+                    />
                 }
             </h1>
 
             <center>
-                <h1 className="big-center-header" style={{position: "absolute", top: 75, textAlign: "center", width: "100%", color: "black", lineHeight: scrollY / 75}}>THE RPS ARGONAUTS</h1>
-            </center>n 
+                <h1 className="big-center-header" style={{position: "absolute", top: 75, textAlign: "center", width: "100%", color: "white", lineHeight: scrollY / 75}}>THE RPS ARGONAUTS</h1>
+            </center>
 
             {typeWriteEnd && <div style={{
                 color: "black", 

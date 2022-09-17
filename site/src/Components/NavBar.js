@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function NavBar({t, background = "", color = "white"}){
+export default function NavBar({t, background = "", color = "black"}){
     return (
     <nav className="nav-no-space" style={{top: t, position: "fixed", width: "100%", zIndex: 2, backgroundColor: background}}>
         <ul className="nav-list">
