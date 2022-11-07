@@ -5,7 +5,7 @@ export default function NavBar({t, background = "", color = "black"}){
     <nav className="nav-no-space" style={{top: t, position: "fixed", width: "100%", zIndex: 2, backgroundColor: background}}>
         <ul className="nav-list">
             <li className="nav-item">
-                <img src={require("../Image/Logo.png")} alt="logo" width="35" height="35"/>
+                <img src={require("../Image/Logo.png")} alt="logo" width="40" height="40"/>
                 <Link to="/" style={{color: color}}>21630</Link>
             </li>
             <li className="nav-item">

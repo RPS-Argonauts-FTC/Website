@@ -135,7 +135,7 @@ export default function Home(){
                 paddingLeft: 25
             }}>
                 <h1>Our Robot</h1>
-                <p>A 3D Rendering of our team's robot built for the '22-'23 season.<br/> <br/> <b>Drag to spin around.</b></p>
+                <p>A 3D Rendering of our team's robot built for the '22-'23 season. <br/> (will be disclosed when season ends)<br/> <br/> <b>Drag to spin around.</b></p>
                 {/* Chlictor forever */}
             </div>
 
@@ -148,7 +148,7 @@ export default function Home(){
                 right: 25
             }}>
                 <h1>Built To Win</h1>
-                <p>Let's take this W.<br/> <br/></p>
+                <p>We're currently 6-0 in qualifications. <br/> <b>Let's keep that up.</b> <br/></p>
                 {/* Chlictor forever */}
             </div>
 
