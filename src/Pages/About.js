@@ -50,10 +50,10 @@ export default function About(){
                     <h1>Welcome to our webpage!</h1><br />
                     Founded this year in 2022 (rookie team), the Argonauts are a coalition of students passionate for STEM and outreach for others intersted in FTC or STEM. We are a school team out of Rutgers Preparatory school.
                 </p>
-                
+
                 <div style={{height: 1050}} />
                 <div
-                    style={{position: "absolute", top: 1200, left: (scrollY - 300) / 2 - 600}}
+                    style={{position: "absolute", top: 1200, left: (scrollY - 300) / 2 - 600, overflowX: "hidden"}}
                 >
                     <img
                         src="https://www.rutgersprep.org/uploaded/admission/campus-aerial-visit-rutgers-prep-banner.jpg"
@@ -63,8 +63,21 @@ export default function About(){
                 </div>
 
                 <p>
-                    <h1>Welcome to our webpage!</h1><br />
-                    Founded this year in 2022 (rookie team), the Argonauts are a coalition of students passionate for STEM and outreach for others intersted in FTC or STEM. We are a school team out of Rutgers Preparatory school.
+                    <h1>Our Team</h1>
+                    Here are all the active members of the Argonauts (as of 2022-2023 season):
+
+                    <h2>Roster</h2>
+                    <ul>
+                        <p>tbd</p>
+                    </ul>
+                    
+                    <h2>Shadows</h2>
+                    <ul>
+                        <p>tbd</p>
+                    </ul>
+
+                    <h2>Mentor Team</h2>
+                    As a rookie, we have a mentor team; we would like to give special thanks to <a href="http://irobotics.org/" target="_blank">FTC11697 TECH-TONIC</a> for helping us in our first year.
                 </p>
             </div>}
         </div>

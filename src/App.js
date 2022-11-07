@@ -11,9 +11,6 @@ import {
 } from "react-router-dom";
 
 function App() {
-  // return(
-  //   <About />
-  // );
   return (
     <Router>
       <Routes>
