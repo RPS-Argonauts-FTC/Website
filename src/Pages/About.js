@@ -59,7 +59,7 @@ export default function About(){
                         src="https://www.rutgersprep.org/uploaded/admission/campus-aerial-visit-rutgers-prep-banner.jpg"
                         alt="Rutgers Prep"
                     />
-                    <h1 style={{position: "absolute", bottom: 25, left: 25}}>Image of our school.</h1>
+                    <h1 style={{position: "absolute", bottom: 25, left: 25}}>Our school.</h1>
                 </div>
 
                 <p>
@@ -68,12 +68,20 @@ export default function About(){
 
                     <h2>Roster</h2>
                     <ul>
-                        <p>tbd</p>
+                        <li><p>Builders: Promit, Abigail, Jason, Max, Daniel, Tom, Arjan, Palash</p></li>
+                        <li><p>Programmers: Promit, Abigail, Jason, Max, Daniel</p></li>
+                        <li><p>Cad: Victor, Arnav, Ishan, Cheng</p></li>
+                        <li><p>Spirit:  Ishan, Cheng, Mimansa </p></li>
+                        <li><p>Photography/Video: Mimansa, Ishan</p></li>
+                        <li><p>Scouts: Mimansa, Cheng, Promit</p></li>
+
+                        <li><p>Players: Max (Driver 1), Daniel (Driver 2), Jason (Human), Tom (Coach)</p></li>
                     </ul>
                     
                     <h2>Shadows</h2>
                     <ul>
-                        <p>tbd</p>
+                        <li><p>Cad: Sasha</p></li>
+                        <li><p>Builders: Sasha</p></li>
                     </ul>
 
                     <h2>Mentor Team</h2>
