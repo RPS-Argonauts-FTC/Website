@@ -9,6 +9,12 @@ export default function NavBar({t, background = "", color = "black"}){
                 <Link to="/" style={{color: color}}>21630</Link>
             </li>
             <li className="nav-item">
+                <a href="https://openscout.argonautsftc.org/" style={{color: color}}>OpenScout</a>
+            </li>
+            <li className="nav-item">
+                <a href="https://cowlang.argonautsftc.org/" style={{color: color}}>Cowlang IDE</a>
+            </li>
+            <li className="nav-item">
                 <Link to="/competitions" style={{color: color}}>Powerplay 22-23</Link>
             </li>
             <li className="nav-item">
