@@ -18,7 +18,7 @@ export default function Competitions(){
                     ms={50}
                     apexPause={1000}
                 />
-                <a href="http://www.ftcstats.org/2023/index.html" target="_blank">Our Official Powerplay 22-23 Scores</a>
+                <a href="https://ftc-events.firstinspires.org/2022/team/21630#events" target="_blank">Our Official Powerplay 22-23 Scores</a>
             </center>
 
             <center style={{padding: 25}}>
